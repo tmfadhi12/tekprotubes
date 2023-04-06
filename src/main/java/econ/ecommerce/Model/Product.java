@@ -17,43 +17,43 @@ public class Product {
     private Integer product_id;
 
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
 
     @Column(name = "stock")
-    private Integer product_stock;
+    private Integer productStock;
 
     @Column(name = "price")
-    private Integer product_price;
+    private Integer productPrice;
 
     @Column(name = "seller_storename")
-    private String seller_storename;
+    private String sellerStorename;
 
     public String getProduct_name() {
-        return product_name;
+        return productName;
     }
     public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+        this.productName = product_name;
     }
 
     public Integer getProduct_stock() {
-        return product_stock;
+        return productStock;
     }
 
     public void setProduct_stock(Integer product_stock) {
-        this.product_stock = product_stock;
+        this.productStock = product_stock;
     }
     
     public Integer getProduct_price() {
-        return product_price;
+        return productPrice;
     }
     public void setProduct_price(Integer product_price) {
-        this.product_price = product_price;
+        this.productPrice = product_price;
     }
     public String getSeller_storename() {
-        return seller_storename;
+        return sellerStorename;
     }
     public void setSeller_storename(String seller_storename) {
-        this.seller_storename = seller_storename;
+        this.sellerStorename = seller_storename;
     }
 
     public Integer getProduct_id() {
@@ -67,21 +67,5 @@ public class Product {
     public Product(){
         
     }
-    
-    public Product(Integer product_id, String product_name, Integer product_stock, Integer product_price,
-            String seller_storename) {
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.product_stock = product_stock;
-        this.product_price = product_price;
-        this.seller_storename = seller_storename;
-    }
-    
-    public Product(String product_name, Integer product_stock, Integer product_price,
-            String seller_storename) {
-        this.product_name = product_name;
-        this.product_stock = product_stock;
-        this.product_price = product_price;
-        this.seller_storename = seller_storename;
-    }
+
 }

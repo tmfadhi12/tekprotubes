@@ -18,50 +18,50 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "transaction_id")
-    private Integer transaction_id;
+    private Integer transactionId;
 
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
 
     @Column(name = "quantity")
-    private Integer product_quantity;
+    private Integer productQuantity;
 
     @Column(name = "seller_storename")
-    private String seller_storename;
+    private String sellerStorename;
 
     @Column(name = "date")
     private final Timestamp date = Timestamp.valueOf(LocalDateTime.now());
 
     public Integer getTransaction_id() {
-        return transaction_id;
+        return transactionId;
     }
 
     public void setTransaction_id(Integer transaction_id) {
-        this.transaction_id = transaction_id;
+        this.transactionId = transaction_id;
     }
 
     public String getProduct_name() {
-        return product_name;
+        return productName;
     }
 
     public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+        this.productName = product_name;
     }
 
     public Integer getProduct_quantity() {
-        return product_quantity;
+        return productQuantity;
     }
 
     public void setProduct_quantity(Integer product_quantity) {
-        this.product_quantity = product_quantity;
+        this.productQuantity = product_quantity;
     }
 
     public String getSeller_storename() {
-        return seller_storename;
+        return sellerStorename;
     }
 
     public void setSeller_storename(String seller_storename) {
-        this.seller_storename = seller_storename;
+        this.sellerStorename = seller_storename;
     }
 
     public Timestamp getDate() {

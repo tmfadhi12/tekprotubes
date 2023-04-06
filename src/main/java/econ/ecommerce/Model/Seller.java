@@ -11,22 +11,29 @@ import jakarta.persistence.Table;
 @Table(name = "seller")
 public class Seller {
 
+    public Seller(String sellerUsername, String sellerPassword, String sellerStorename, Integer sellerCredit) {
+        this.sellerUsername = sellerUsername;
+        this.sellerPassword = sellerPassword;
+        this.sellerStorename = sellerStorename;
+        this.sellerCredit = sellerCredit;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "seller_id")
     private Integer id;
 
     @Column(name = "seller_user")
-    private String seller_username;
+    private String sellerUsername;
 
     @Column(name = "seller_pass")
-    private String seller_password;
+    private String sellerPassword;
 
     @Column(name = "storename")
-    private String seller_storename;
+    private String sellerStorename;
 
     @Column(name = "credit")
-    private Integer seller_credit;
+    private Integer sellerCredit;
 
     public Integer getId() {
         return id;
@@ -34,50 +41,33 @@ public class Seller {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getSeller_username() {
-        return seller_username;
+    public String getsellerUsername() {
+        return sellerUsername;
     }
-    public void setSeller_username(String seller_username) {
-        this.seller_username = seller_username;
+    public void setsellerUsername(String sellerUsername) {
+        this.sellerUsername = sellerUsername;
     }
-    public String getSeller_password() {
-        return seller_password;
+    public String getsellerPassword() {
+        return sellerPassword;
     }
-    public void setSeller_password(String seller_password) {
-        this.seller_password = seller_password;
+    public void setsellerPassword(String sellerPassword) {
+        this.sellerPassword = sellerPassword;
     }
-    public String getSeller_storename() {
-        return seller_storename;
+    public String getsellerStorename() {
+        return sellerStorename;
     }
-    public void setSeller_storename(String seller_storename) {
-        this.seller_storename = seller_storename;
+    public void setsellerStorename(String sellerStorename) {
+        this.sellerStorename = sellerStorename;
     }
-    public Integer getSeller_credit() {
-        return seller_credit;
+    public Integer getsellerCredit() {
+        return sellerCredit;
     }
-    public void setSeller_credit(Integer seller_credit) {
-        this.seller_credit = seller_credit;
+    public void setsellerCredit(Integer sellerCredit) {
+        this.sellerCredit = sellerCredit;
     }
 
     public Seller(){
         
     }
-
-    public Seller(Integer id, String seller_username, String seller_password, String seller_storename,
-            Integer seller_credit) {
-        this.id = id;
-        this.seller_username = seller_username;
-        this.seller_password = seller_password;
-        this.seller_storename = seller_storename;
-        this.seller_credit = seller_credit;
-    } 
-    
-    public Seller(String seller_username, String seller_password, String seller_storename,
-            Integer seller_credit) {
-        this.seller_username = seller_username;
-        this.seller_password = seller_password;
-        this.seller_storename = seller_storename;
-        this.seller_credit = seller_credit;
-    } 
 
 }
