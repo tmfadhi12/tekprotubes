@@ -1,0 +1,6 @@
+export {default as Home} from './home/index'
+export {default as BodyHome} from './home/home'
+export {default as NotFound} from './404/index'
+export {default as Admin} from './admin/index'
+export {default as BodyAdmin} from './admin/admin'
+export {default as LoginPage} from './login/login'
