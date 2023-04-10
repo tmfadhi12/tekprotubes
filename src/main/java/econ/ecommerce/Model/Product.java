@@ -11,6 +11,13 @@ import jakarta.persistence.Table;
 @Table(name = "product")
 public class Product {
 
+    public Product(String productName, Integer productStock, Integer productPrice, String sellerStorename) {
+        this.productName = productName;
+        this.productStock = productStock;
+        this.productPrice = productPrice;
+        this.sellerStorename = sellerStorename;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
@@ -63,9 +70,9 @@ public class Product {
     public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
     }
-
+    
     public Product(){
-        
+
     }
 
 }
