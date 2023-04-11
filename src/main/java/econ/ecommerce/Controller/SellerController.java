@@ -31,7 +31,7 @@ public class SellerController {
         return sellerrepo.save(saved);
     }
 
-    @GetMapping("/seller/{username}")
+    @GetMapping("/seller/byusername")
     public List<Seller> getSellerByUsername(@RequestParam("sellerUsername") String SellerUsername){
         return sellerrepo.findBySellerUsernameContainingIgnoreCase(SellerUsername);
     }
