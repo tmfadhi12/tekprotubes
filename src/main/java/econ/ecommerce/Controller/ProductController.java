@@ -1,9 +1,11 @@
 package econ.ecommerce.Controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +35,20 @@ public class ProductController {
         return productrepo.save(saved);
     }
 
-    @PutMapping("/product/{id}/stokupdate")
-    public Product updatestokProduct(@PathVariable Integer id, @RequestParam("stok") Integer productStock){
-        Product product = productrepo.findById(id).get();
-        product.setProduct_stock(productStock);
-        return productrepo.save(product);
+    @PutMapping("/product/{id}")
+    public ResponseEntity<Object> updateProduct(@RequestBody Product pr, @PathVariable Integer id){
+        try {
+            Product existProduct = productrepo.findById(id).orElseThrow(()-> new RuntimeException(
+                String.format("Cannot Find Expense by ID %s", id)
+            ));
+            existProduct.setProduct_name(pr.getProduct_name() == null ? existProduct.getProduct_name() : pr.getProduct_name());
+            existProduct.setProduct_price(pr.getProduct_price() == null ? existProduct.getProduct_price() : pr.getProduct_price());
+            existProduct.setProduct_stock(pr.getProduct_stock() == null ? existProduct.getProduct_stock() : pr.getProduct_stock());
+            productrepo.save(existProduct);
+            return new ResponseEntity<>(HttpStatus.OK); 
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/product/{id}")
