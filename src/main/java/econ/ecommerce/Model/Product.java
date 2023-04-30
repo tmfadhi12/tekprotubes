@@ -11,10 +11,11 @@ import jakarta.persistence.Table;
 @Table(name = "product")
 public class Product {
 
-    public Product(String productName, Integer productStock, Integer productPrice, String sellerStorename) {
+    public Product(String productName, Integer productStock, Integer productPrice, String imageUrl, String sellerStorename) {
         this.productName = productName;
         this.productStock = productStock;
         this.productPrice = productPrice;
+        this.imageUrl = imageUrl;
         this.sellerStorename = sellerStorename;
     }
 
@@ -31,6 +32,17 @@ public class Product {
 
     @Column(name = "price")
     private Integer productPrice;
+
+    @Column(name = "image")
+    private String imageUrl;
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
     @Column(name = "seller_storename")
     private String sellerStorename;
