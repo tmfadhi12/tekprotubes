@@ -23,11 +23,52 @@ public class Transaction {
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "quantity")
-    private Integer productQuantity;
-
     @Column(name = "seller_storename")
     private String sellerStorename;
+
+    @Column(name = "buyername")
+    private String buyerName;
+
+    @Column(name = "telp")
+    private String noTelp;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "ordernotes")
+    private String orderNotes;
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getNoTelp() {
+        return noTelp;
+    }
+
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getOrderNotes() {
+        return orderNotes;
+    }
+
+    public void setOrderNotes(String orderNotes) {
+        this.orderNotes = orderNotes;
+    }
 
     @Column(name = "date")
     private final Timestamp date = Timestamp.valueOf(LocalDateTime.now());
@@ -48,14 +89,6 @@ public class Transaction {
         this.productName = product_name;
     }
 
-    public Integer getProduct_quantity() {
-        return productQuantity;
-    }
-
-    public void setProduct_quantity(Integer product_quantity) {
-        this.productQuantity = product_quantity;
-    }
-
     public String getSeller_storename() {
         return sellerStorename;
     }
@@ -68,7 +101,40 @@ public class Transaction {
         return date;
     }
 
+    public Transaction(String productName, String sellerStorename, String buyerName, String noTelp, String address, String orderNotes){
+        setProduct_name(productName);
+        setSeller_storename(sellerStorename);
+        setBuyerName(buyerName);
+        setNoTelp(noTelp);
+        setAddress(address);
+        setOrderNotes(orderNotes);
+    }
+
     public Transaction(){
 
+    }
+
+    public Integer getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Integer transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getSellerStorename() {
+        return sellerStorename;
+    }
+
+    public void setSellerStorename(String sellerStorename) {
+        this.sellerStorename = sellerStorename;
     }
 }

@@ -128,11 +128,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6">
-              <h2>Product Details</h2>
-              <div>
-                <a class="btn btn-primary" href="/addproduct"> Add New </a>
-                <a class="btn btn-primary" href="/transactionHistory"> See Transaction History </a>
-              </div>
+              <h2>Transaction History</h2>
             </div>
           </div>
           <div class="row">
@@ -140,28 +136,27 @@
               <table id="productTable" class="table table-bordered table-condensed table-striped">
                 <thead>
                   <tr>
+                    <th>Transaction Id</th>
+                    <th>Buyer Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Order Notes</th>
                     <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>Seller</th>
-                    <th>Action</th>
+                    <th>Seller Name</th>
+                    <th>Buying Date</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <div th:each="pr : ${productlist}">
+                  <div th:each="lh : ${listTr}">
                     <tr>
-                      <td th:text="${pr.product_name}"></td>
-                      <td th:text="${pr.product_price}"></td>
-                      <td th:text="${pr.product_stock}"></td>
-                      <td th:text="${pr.seller_storename}"></td>
-                      <td>
-                        <span style="display: flex;">
-                          <a class="btn btn-primary" th:href="@{/product/{id}(id=${pr.product_id})}">Edit</a>
-                          <form action="#" th:action="@{/deleteproduct/{id}(id=${pr.product_id})}" method="post">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                          </form>
-                        </span>
-                      </td>
+                      <td th:text="${lh.transactionId}"></td>
+                      <td th:text="${lh.buyerName}"></td>
+                      <td th:text="${lh.noTelp}"></td>
+                      <td th:text="${lh.address}"></td>
+                      <td th:text="${lh.orderNotes}"></td>
+                      <td th:text="${lh.productName}"></td>
+                      <td th:text="${lh.sellerStorename}"></td>
+                      <td th:text="${lh.date}"></td>
                     </tr>
                   </div>
                 </tbody>
