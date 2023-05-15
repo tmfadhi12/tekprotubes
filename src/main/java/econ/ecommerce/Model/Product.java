@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "product")
@@ -27,6 +29,7 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
+    // @Min(value = 0L, message = "Must be Integer with minimun value is 0")
     @Column(name = "stock")
     private Integer productStock;
 
@@ -85,6 +88,9 @@ public class Product {
     
     public Product(){
 
+    }
+
+    public void orElseThrow(Object object) {
     }
 
 }

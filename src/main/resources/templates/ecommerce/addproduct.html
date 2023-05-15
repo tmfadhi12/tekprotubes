@@ -142,7 +142,8 @@
                       </div>
                       <div class="form-group">
                         <label for="productstock"> Stock </label>
-                        <input type="number" class="form-control" id="productStock" name="productStock">
+                        <input type="text" class="form-control" id="productStock" name="productStock">
+                        <p style="color: red; font-size: small;" th:if="${errormsg}" th:text="${errormsg}"></p>
                       </div>
                       <div class="form-group">
                         <label for="productname"> Product Cover </label>
