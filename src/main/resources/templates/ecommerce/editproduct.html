@@ -134,10 +134,6 @@
                     <form action=""# th:action="@{/product/{id}(id=${existproduct.product_id})}" th:object="${existproduct}" method="post"
                       id="editProduct">
                       <div class="form-group">
-<<<<<<< HEAD
-=======
-                        <p class="alert alert-danger text-sm" role="alert" th:if="${errormsg}" th:text="${errormsg}"></p>
->>>>>>> 5bf74ff (p)
                         <label for="productname"> Product Name </label>
                         <input type="text" class="form-control" id="product_name" th:field="*{product_name}">
                       </div>

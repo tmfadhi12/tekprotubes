@@ -332,14 +332,16 @@
                   </div>
                 </div>
                 <!--/product_price--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-                <a th:href="@{/checkout/{id}(id=${pr.product_id})}">
-                  <button th:if="${pr.product_stock != 0}" type="button" class="btn btn-primary u-product-control u-btn-6">
+                <a th:if="${pr.product_stock != 0}" th:href="@{/checkout/{id}(id=${pr.product_id})}">
+                  <button type="button"
+                    class="btn btn-primary u-product-control u-btn-6">
                     Buy Now
                   </button>
-                  <button th:if="${pr.product_stock == 0}" disabled type="button" class="btn btn-danger u-product-control u-btn-6">
-                    Sold
-                  </button>
                 </a>
+                <button th:if="${pr.product_stock == 0}" disabled type="button"
+                  class="btn btn-danger u-product-control u-btn-6">
+                  Sold
+                </button>
               </div>
             </div>
           </div><!--/product_item--><!--product_item-->
