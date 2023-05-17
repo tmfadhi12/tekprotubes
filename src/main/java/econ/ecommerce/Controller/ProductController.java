@@ -1,5 +1,6 @@
 package econ.ecommerce.Controller;
 
+import java.io.IOError;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -24,9 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import econ.ecommerce.Exception.AddException;
+import econ.ecommerce.Exception.InvalidInputException;
 import econ.ecommerce.Model.Product;
 import econ.ecommerce.Repo.ProductRepo;
-import jakarta.validation.Valid;
 
 @Controller
 public class ProductController {
@@ -80,29 +82,46 @@ public class ProductController {
 
     @PostMapping("/product")
     public String createProduct(@RequestParam String productName, Integer productStock, Integer productPrice,
-            String imageUrl, String sellerStorename, Model model) {
-        Product saved = new Product(productName, productStock, productPrice, imageUrl, sellerStorename);
-        productrepo.save(saved);
-        return "redirect:/addproduct";
+        String imageUrl, String sellerStorename, Model model) {
+        
+        try {
+            if (productStock < 0 || productPrice < 0) {
+                throw new AddException("stock or price can't below 0.");
+            }
+
+            Product saved = new Product(productName, productStock, productPrice, imageUrl, sellerStorename);
+            productrepo.save(saved);
+
+            return "redirect:/addproduct";
+        } catch (AddException e) {
+            model.addAttribute("errormsg", e.getLocalizedMessage());
+            return "ecommerce/addproduct";
+        }
+
     }
 
-    @ExceptionHandler(TypeMismatchException.class)
     @PostMapping("/product/{id}")
-    public String updateProduct(@ModelAttribute Product pr, @PathVariable Integer id, Model model) {
-        Product existProduct = productrepo.findById(id).orElseThrow(() -> new RuntimeException(
-                String.format("Cannot Find Product by ID %s", id)));
-        existProduct.setProduct_name(
-                pr.getProduct_name() == null ? existProduct.getProduct_name() : pr.getProduct_name());
-        existProduct.setProduct_price(
-                pr.getProduct_price() == null ? existProduct.getProduct_price() : pr.getProduct_price());
-        existProduct.setProduct_stock(
-                pr.getProduct_stock() == null ? existProduct.getProduct_stock() : pr.getProduct_stock());
-        existProduct.setSeller_storename(
-                pr.getSeller_storename() == null ? existProduct.getSeller_storename() : pr.getSeller_storename());
-        existProduct.setImageUrl(pr.getImageUrl() == null ? existProduct.getImageUrl() : pr.getImageUrl());
-        productrepo.save(existProduct);
+    public String updateProduct(@ModelAttribute("product") Product pr, @PathVariable Integer id, Model model, BindingResult bindingres) {
+        try {
+            Product existProduct = productrepo.findById(id).orElseThrow(() -> new RuntimeException(
+                    String.format("Cannot Find Product by ID %s", id)));
 
-        return "ecommerce/addproduct";
+            existProduct.setProduct_name(
+                    pr.getProduct_name() == null ? existProduct.getProduct_name() : pr.getProduct_name());
+            existProduct.setProduct_price(
+                    pr.getProduct_price() == null ? existProduct.getProduct_price() : pr.getProduct_price());
+            existProduct.setProduct_stock(
+                    pr.getProduct_stock() == null ? existProduct.getProduct_stock() : pr.getProduct_stock());
+            existProduct.setSeller_storename(
+                    pr.getSeller_storename() == null ? existProduct.getSeller_storename() : pr.getSeller_storename());
+            existProduct.setImageUrl(pr.getImageUrl() == null ? existProduct.getImageUrl() : pr.getImageUrl());
+
+            productrepo.save(existProduct);
+        } catch (AddException e) {
+            model.addAttribute("errormsg", e.getLocalizedMessage());
+        }
+
+        return "redirect:/admin";
     }
 
     @PostMapping("/deleteproduct/{id}")

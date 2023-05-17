@@ -17,6 +17,7 @@
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -133,25 +134,25 @@
                   <div>
                     <form action="#" # th:action="@{/product}" method="post" id="addProduct">
                       <div class="form-group">
+                        <p class="alert alert-danger text-sm" role="alert" th:if="${errormsg}" th:text="${errormsg}"></p>
                         <label for="productname"> Product Name </label>
-                        <input type="text" class="form-control" id="productName" name="productName">
+                        <input type="text" class="form-control" id="productName" name="productName" required>
                       </div>
                       <div class="form-group">
                         <label for="productprice"> Price </label>
-                        <input type="number" class="form-control" id="productPrice" name="productPrice">
+                        <input type="text" class="form-control" id="productPrice" name="productPrice" required>
                       </div>
                       <div class="form-group">
                         <label for="productstock"> Stock </label>
-                        <input type="text" class="form-control" id="productStock" name="productStock">
-                        <p style="color: red; font-size: small;" th:if="${errormsg}" th:text="${errormsg}"></p>
+                        <input type="text" class="form-control" id="productStock" name="productStock"required>
                       </div>
                       <div class="form-group">
                         <label for="productname"> Product Cover </label>
-                        <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"required>
                       </div>
                       <div class="form-group">
                         <label for="productname"> Seller Name </label>
-                        <input type="text" class="form-control" id="sellerStorename" name="sellerStorename">
+                        <input type="text" class="form-control" id="sellerStorename" name="sellerStorename"required>
                       </div>
                     </form>
                   </div>
@@ -230,6 +231,8 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path>
     </a>.
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 
 </html>
