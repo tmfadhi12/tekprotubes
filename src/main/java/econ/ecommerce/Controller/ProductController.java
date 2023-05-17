@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import econ.ecommerce.Exception.AddException;
-import econ.ecommerce.Exception.InvalidInputException;
 import econ.ecommerce.Model.Product;
 import econ.ecommerce.Repo.ProductRepo;
 
